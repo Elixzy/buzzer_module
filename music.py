@@ -127,13 +127,13 @@ figures={
         'sc' : 1/16,
         'fu' : 1/32,
         'sf' : 1/64,
-        #1/3
         'tb' : 1/3,
         'tn' : 1/6,
         'tc' : 1/12,
         'ts' : 1/24
         }
 
+#duty = volume
 def play(pin, melody, duty, speed):
     pwm= PWM(pin)
     for i in melody:
