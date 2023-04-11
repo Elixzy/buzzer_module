@@ -120,23 +120,25 @@ notes={'PAUSE':1,
         'SI_8' : 7902}
 
 figures={
-        'r' : 1,
-        'b' : 1/2,
-        'n' : 1/4,
-        'c' : 1/8,
+        're' : 1,
+        'bl' : 1/2,
+        'ne' : 1/4,
+        'co' : 1/8,
         'sc' : 1/16,
-        'f' : 1/32,
+        'fu' : 1/32,
         'sf' : 1/64,
+        #tresillos
         'tb' : 1/3,
         'tn' : 1/6,
         'tc' : 1/12,
-        'tsc' : 1/24}
+        'ts' : 1/24
+        }
 
 def play(pin, melody, duty, speed):
     pwm= PWM(pin)
     for i in melody:
-        pwm.freq(notes[i[0]])
+        pwm.freq(notes[i[:-3]])
         pwm.duty(duty)
-        time.sleep(figures[i[1]]*speed)
+        time.sleep(figures[i[-2:]]*speed)
         pwm.duty(0)
-        time.sleep(figures[i[1]])
+        time.sleep(figures[i[-2:]])
